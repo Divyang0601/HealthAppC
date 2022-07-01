@@ -1,7 +1,8 @@
 #Important Modules
 from flask import Flask,render_template, url_for ,flash , redirect
 #from forms import RegistrationForm, LoginForm
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import joblib
 from flask import request
 import numpy as np
 import tensorflow

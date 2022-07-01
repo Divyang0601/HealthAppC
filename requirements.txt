@@ -4,7 +4,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 Werkzeug==0.15.5
-tensorflow==2.0.0
+tensorflow-cpu
 Pillow==8.3.2
 numpy
 scikit-learn

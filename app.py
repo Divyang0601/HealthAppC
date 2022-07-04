@@ -297,7 +297,7 @@ def result3():
         temp_value = temp_value + int(request.form['radio4'])
         print(temp_value)
         if temp_value >= 2:
-            return render_template("Malaria.html")
+            return render_template("index.html")
 
     return render_template("negative result.html")
 

@@ -1,7 +1,6 @@
 #Important Modules
 from flask import Flask,render_template, url_for ,flash , redirect
 #from forms import RegistrationForm, LoginForm
-#from sklearn.externals import joblib
 import joblib
 from flask import request
 import numpy as np
@@ -258,8 +257,67 @@ def ValuePredictor(to_predict_list, size):
         result =loaded_model.predict(to_predict)
     return result[0]
 
+@app.route('/cancer_quiz',methods = ["POST"])
+def result1():
+    #temp_value = list()
+    if request.method == 'POST':
+        temp_value = int(request.form['radio1'])
+        temp_value = temp_value + int(request.form['radio2'])
+        temp_value = temp_value + int(request.form['radio3'])
+        temp_value = temp_value + int(request.form['radio4'])
+        temp_value = temp_value + int(request.form['radio5'])
+        temp_value = temp_value + int(request.form['radio6'])
+        print(temp_value)
+        if temp_value >= 4:
+            return render_template("cancer.html")
+    
+    return render_template("negative result.html")
+
+    
+
+@app.route('/heart_quiz',methods = ["POST"])
+def result2():
+    if request.method == 'POST':
+        temp_value = int(request.form['radio1'])
+        temp_value = temp_value + int(request.form['radio2'])
+        temp_value = temp_value + int(request.form['radio3'])
+        temp_value = temp_value + int(request.form['radio4'])
+        temp_value = temp_value + int(request.form['radio5'])
+        print(temp_value)
+        if temp_value >= 3:
+            return render_template("heart.html")
+    return render_template("negative result.html")
+
+@app.route('/malaria_quiz',methods = ["POST"])
+def result3():
+    if request.method == 'POST':
+        temp_value = int(request.form['radio1'])
+        temp_value = temp_value + int(request.form['radio2'])
+        temp_value = temp_value + int(request.form['radio3'])
+        temp_value = temp_value + int(request.form['radio4'])
+        print(temp_value)
+        if temp_value >= 2:
+            return render_template("Malaria.html")
+
+    return render_template("negative result.html")
+
+@app.route('/cancer_quiz.html')
+def quiz_view1():
+    return render_template("cancer_quiz.html")
+
+@app.route('/heart_quiz.html')
+def quiz_view2():
+    return render_template("heart_quiz.html")
+
+@app.route('/malaria_quiz.html')
+def quiz_view3():
+    return render_template("malaria_quiz.html")
+
+
+
+
 @app.route('/result',methods = ["POST"])
-def result():
+def result_quiz1():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
         to_predict_list=list(to_predict_list.values())
